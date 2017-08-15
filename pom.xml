@@ -111,7 +111,7 @@
         <configuration>
           <images>
             <image>
-              <name>salaboy/activiti-cloud-gateway</name>
+              <name>activiti/activiti-cloud-gateway</name>
               <alias>activiti-cloud-gateway</alias>
               <build>
                 <from>openjdk:alpine</from>
@@ -154,6 +154,17 @@
       <id>spring-snapshots</id>
       <name>Spring Snapshots</name>
       <url>https://repo.spring.io/libs-snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository> <!-- Using snapshot repo to temporarily keep keycloak adapter -->
+      <id>activiti-snapshots</id>
+      <name>Activiti Snapshots</name>
+      <url>https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>

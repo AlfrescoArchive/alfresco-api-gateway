@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext
-public class ApplicationTests {
+public class ApplicationTest {
 
     @Test
     public void contextLoads() throws Exception {

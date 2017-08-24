@@ -24,11 +24,10 @@
   <version>7-201708-EA-SNAPSHOT</version>
   <artifactId>activiti-cloud-gateway</artifactId>
 
-  <name>Activiti Cloud Gateway</name>
+  <name>Activiti Cloud :: Gateway</name>
 
   <properties>
-    <!-- Spring Boot / Cloud deps -->
-    <spring.boot.version>2.0.0.M3</spring.boot.version>
+    <version.activiti>${project.version}</version.activiti>
     <spring.cloud.version>Finchley.BUILD-SNAPSHOT</spring.cloud.version>
 
     <spring-boot-maven-plugin.version>1.5.4.RELEASE</spring-boot-maven-plugin.version>
@@ -36,11 +35,10 @@
 
   <dependencyManagement>
     <dependencies>
-      <!-- Spring Boot / Cloud dependencies -->
       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring.boot.version}</version>
+        <groupId>org.activiti</groupId>
+        <artifactId>activiti-dependencies</artifactId>
+        <version>${version.activiti}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -56,10 +54,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-beans</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-zuul</artifactId>
     </dependency>
@@ -70,7 +64,6 @@
     <dependency>
       <groupId>org.activiti</groupId>
       <artifactId>activiti-services-identity-keycloak</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -103,8 +96,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-
+      </plugin> 
     </plugins>
   </build>
 

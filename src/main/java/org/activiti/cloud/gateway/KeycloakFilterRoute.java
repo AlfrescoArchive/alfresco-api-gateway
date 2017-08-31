@@ -17,6 +17,9 @@
 
 package org.activiti.cloud.gateway;
 
+import java.util.Enumeration;
+import javax.servlet.http.HttpServletRequest;
+
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.keycloak.adapters.RefreshableKeycloakSecurityContext;
@@ -45,6 +48,13 @@ public class KeycloakFilterRoute extends ZuulFilter {
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest request = ctx.getRequest();
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while(headerNames.hasMoreElements()){
+            String s = headerNames.nextElement();
+            System.out.println(">> Header: " + s  + " = " + request.getHeader(s));
+        }
+
         if (ctx.getRequest().getHeader(AUTHORIZATION_HEADER) == null) {
             addKeycloakTokenToHeader(ctx);
         }

@@ -49,12 +49,6 @@ public class KeycloakFilterRoute extends ZuulFilter {
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
-        Enumeration<String> headerNames = request.getHeaderNames();
-        while(headerNames.hasMoreElements()){
-            String s = headerNames.nextElement();
-            System.out.println(">> Header: " + s  + " = " + request.getHeader(s));
-        }
-
         if (ctx.getRequest().getHeader(AUTHORIZATION_HEADER) == null) {
             addKeycloakTokenToHeader(ctx);
         }

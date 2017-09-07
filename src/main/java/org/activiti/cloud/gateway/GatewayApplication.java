@@ -24,7 +24,7 @@ public class GatewayApplication {
                               args);
     }
 
-    @ConditionalOnProperty(prefix = "keycloak", name = "cors", matchIfMissing = false)
+    @Bean
     public KeycloakFilterRoute keycloakFilterRoute() {
         return new KeycloakFilterRoute();
     }

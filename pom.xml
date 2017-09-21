@@ -28,7 +28,7 @@
 
   <properties>
     <version.activiti>${project.version}</version.activiti>
-    <spring.cloud.version>Finchley.BUILD-SNAPSHOT</spring.cloud.version>
+    <spring.cloud.version>Finchley.M2</spring.cloud.version>
 
     <spring-boot-maven-plugin.version>1.5.4.RELEASE</spring-boot-maven-plugin.version>
     <maven.release.plugin.version>2.5.3</maven.release.plugin.version>

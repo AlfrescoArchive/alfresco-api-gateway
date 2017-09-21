@@ -31,6 +31,8 @@
     <spring.cloud.version>Finchley.BUILD-SNAPSHOT</spring.cloud.version>
 
     <spring-boot-maven-plugin.version>1.5.4.RELEASE</spring-boot-maven-plugin.version>
+    <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+    <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
   </properties>
 
   <dependencyManagement>
@@ -96,7 +98,19 @@
             </goals>
           </execution>
         </executions>
-      </plugin> 
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>${maven.release.plugin.version}</version>
+        <configuration>
+          <releaseProfiles>sign</releaseProfiles>
+          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <tagNameFormat>activiti-@{project.version}</tagNameFormat>
+          <!-- Necessary until keycloak releases boot2 adaptor -->
+          <allowTimestampedSnapshots>true</allowTimestampedSnapshots>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -133,11 +147,35 @@
     </repository>
   </repositories>
 
+
+  <profiles>
+    <!-- Profile to sign artifacts, triggered when releasing -->
+    <profile>
+      <id>sign</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>${maven-gpg-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
   <distributionManagement>
     <repository>
-      <id>central-releases-staging</id>
-      <name>Central Releases - Staging</name>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+      <id>activiti-enterprise-snapshots</id>
+      <name>Alfresco internal repo</name>
+      <url>https://artifacts.alfresco.com/nexus/content/repositories/activiti-releases/</url>
     </repository>
     <snapshotRepository>
       <id>activiti-enterprise-snapshots</id>
@@ -169,9 +207,9 @@
     <url>http://bamboo.ci.codehaus.org/browse/ACT</url>
   </ciManagement>
   <scm>
-    <url>https://github.com/Activiti/activiti-cloud-registry</url>
-    <connection>scm:git:https://github.com/Activiti/activiti-cloud-registry.git</connection>
-    <developerConnection>scm:git:https://github.com/Activiti/activiti-cloud-registry.git</developerConnection>
+    <url>https://github.com/Activiti/activiti-cloud-gateway</url>
+    <connection>scm:git:https://github.com/Activiti/activiti-cloud-gateway.git</connection>
+    <developerConnection>scm:git:https://github.com/Activiti/activiti-cloud-gateway.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
   <developers>

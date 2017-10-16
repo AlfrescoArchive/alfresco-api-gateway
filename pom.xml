@@ -27,8 +27,11 @@
   <name>Activiti Cloud :: Gateway</name>
 
   <properties>
-    <version.activiti>${project.version}</version.activiti>
+    <version.activiti.cloud>${project.version}</version.activiti.cloud>
+    <spring.boot.version>2.0.0.M5</spring.boot.version>
     <spring.cloud.version>Finchley.M2</spring.cloud.version>
+    <junit.version>4.12</junit.version>
+    <mockito.version>2.7.22</mockito.version>
 
     <spring-boot-maven-plugin.version>1.5.4.RELEASE</spring-boot-maven-plugin.version>
     <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
@@ -38,9 +41,9 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.activiti</groupId>
-        <artifactId>activiti-dependencies</artifactId>
-        <version>${version.activiti}</version>
+        <groupId>org.activiti.cloud</groupId>
+        <artifactId>activiti-cloud-dependencies</artifactId>
+        <version>${version.activiti.cloud}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -64,8 +67,8 @@
       <artifactId>spring-cloud-starter-eureka</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.activiti</groupId>
-      <artifactId>activiti-services-identity-keycloak</artifactId>
+      <groupId>org.activiti.cloud</groupId>
+      <artifactId>activiti-cloud-services-identity-keycloak</artifactId>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -80,6 +83,11 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>

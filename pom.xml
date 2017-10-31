@@ -29,7 +29,7 @@
   <properties>
     <version.activiti.cloud>${project.version}</version.activiti.cloud>
     <spring.boot.version>2.0.0.M5</spring.boot.version>
-    <spring.cloud.version>Finchley.M2</spring.cloud.version>
+    <spring.cloud.version>Finchley.M3</spring.cloud.version>
     <junit.version>4.12</junit.version>
     <mockito.version>2.7.22</mockito.version>
 
@@ -60,11 +60,11 @@
   <dependencies>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-zuul</artifactId>
+      <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-eureka</artifactId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
     <dependency>
       <groupId>org.activiti.cloud</groupId>

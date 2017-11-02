@@ -114,8 +114,8 @@
         <configuration>
           <images>
             <image>
-              <name>activiti/activiti-cloud-query</name>
-              <alias>activit-cloud-query</alias>
+              <name>activiti/activiti-cloud-gateway</name>
+              <alias>activit-cloud-gateway</alias>
               <build>
                 <from>openjdk:alpine</from>
                 <assembly>
@@ -152,6 +152,7 @@
           <keepBranch>true</keepBranch>
           <noFeatureBuild>true</noFeatureBuild>
           <noFeatureMerge>true</noFeatureMerge>
+          <noReleaseBuild>true</noReleaseBuild>
         </configuration>
       </plugin>
     </plugins>

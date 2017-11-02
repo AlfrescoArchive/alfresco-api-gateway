@@ -21,7 +21,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.activiti.cloud</groupId>
-  <version>7-201710-EA-SNAPSHOT</version>
+  <version>7-201710-EA</version>
   <artifactId>activiti-cloud-gateway</artifactId>
 
   <name>Activiti Cloud :: Gateway</name>
@@ -29,12 +29,13 @@
   <properties>
     <version.activiti.cloud>${project.version}</version.activiti.cloud>
     <spring.boot.version>2.0.0.M5</spring.boot.version>
-    <spring.cloud.version>Finchley.M2</spring.cloud.version>
+    <spring.cloud.version>Finchley.M3</spring.cloud.version>
     <junit.version>4.12</junit.version>
     <mockito.version>2.7.22</mockito.version>
 
+    <docker.maven.plugin.version>0.21.0</docker.maven.plugin.version>
     <spring-boot-maven-plugin.version>1.5.4.RELEASE</spring-boot-maven-plugin.version>
-    <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+    <jgitflow.plugin.version>1.0-m5.1</jgitflow.plugin.version>
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
   </properties>
 
@@ -60,11 +61,11 @@
   <dependencies>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-zuul</artifactId>
+      <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-eureka</artifactId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
     <dependency>
       <groupId>org.activiti.cloud</groupId>
@@ -108,15 +109,50 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>${maven.release.plugin.version}</version>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
         <configuration>
-          <releaseProfiles>sign</releaseProfiles>
+          <images>
+            <image>
+              <name>activiti/activiti-cloud-gateway</name>
+              <alias>activit-cloud-gateway</alias>
+              <build>
+                <from>openjdk:alpine</from>
+                <assembly>
+                  <descriptorRef>artifact</descriptorRef>
+                </assembly>
+                <cmd>java -jar maven/${project.artifactId}-${project.version}.jar</cmd>
+              </build>
+            </image>
+          </images>
+        </configuration>
+        <executions>
+          <execution>
+            <id>docker:build</id>
+            <phase>install</phase>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>external.atlassian.jgitflow</groupId>
+        <artifactId>jgitflow-maven-plugin</artifactId>
+        <version>${jgitflow.plugin.version}</version>
+        <configuration>
+          <enableFeatureVersions>true</enableFeatureVersions>
           <autoVersionSubmodules>true</autoVersionSubmodules>
-          <tagNameFormat>activiti-@{project.version}</tagNameFormat>
-          <!-- Necessary until keycloak releases boot2 adaptor -->
-          <allowTimestampedSnapshots>true</allowTimestampedSnapshots>
+          <allowSnapshots>true</allowSnapshots>
+          <noDeploy>true</noDeploy>
+          <useReleaseProfile>true</useReleaseProfile> <!-- Do not generate javadoc when releaseing -->
+          <pushReleases>true</pushReleases>
+          <squash>true</squash>
+          <versionTagPrefix>activiti-</versionTagPrefix>
+          <keepBranch>true</keepBranch>
+          <noFeatureBuild>true</noFeatureBuild>
+          <noFeatureMerge>true</noFeatureMerge>
+          <noReleaseBuild>true</noReleaseBuild>
         </configuration>
       </plugin>
     </plugins>

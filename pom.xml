@@ -28,8 +28,8 @@
 
   <properties>
     <version.activiti.cloud>${project.version}</version.activiti.cloud>
-    <spring.boot.version>2.0.0.M6</spring.boot.version>
-    <spring.cloud.version>Finchley.M4</spring.cloud.version>
+    <spring.boot.version>2.0.0.M7</spring.boot.version>
+    <spring.cloud.version>Finchley.M5</spring.cloud.version>
     <junit.version>4.12</junit.version>
     <mockito.version>2.7.22</mockito.version>
 

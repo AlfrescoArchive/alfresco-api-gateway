@@ -21,15 +21,15 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.activiti.cloud</groupId>
-  <version>7-201711-EA</version>
+  <version>7-201712-EA</version>
   <artifactId>activiti-cloud-gateway</artifactId>
 
   <name>Activiti Cloud :: Gateway</name>
 
   <properties>
     <version.activiti.cloud>${project.version}</version.activiti.cloud>
-    <spring.boot.version>2.0.0.M6</spring.boot.version>
-    <spring.cloud.version>Finchley.M4</spring.cloud.version>
+    <spring.boot.version>2.0.0.M7</spring.boot.version>
+    <spring.cloud.version>Finchley.M5</spring.cloud.version>
     <junit.version>4.12</junit.version>
     <mockito.version>2.7.22</mockito.version>
 
@@ -124,7 +124,7 @@
                 <assembly>
                   <descriptorRef>artifact</descriptorRef>
                 </assembly>
-                <cmd>java -jar maven/${project.artifactId}-${project.version}.jar</cmd>
+                <cmd>java ${JAVA_OPTS} -jar maven/${project.artifactId}-${project.version}.jar</cmd>
               </build>
             </image>
           </images>

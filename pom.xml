@@ -27,7 +27,7 @@
   <name>Activiti Cloud :: Gateway</name>
 
   <properties>
-    <version.activiti.cloud>${project.version}</version.activiti.cloud>
+    <version.activiti.cloud>7-201802-EA-SNAPSHOT</version.activiti.cloud>
     <spring.boot.version>2.0.0.M7</spring.boot.version>
     <spring.cloud.version>Finchley.M5</spring.cloud.version>
     <junit.version>4.12</junit.version>

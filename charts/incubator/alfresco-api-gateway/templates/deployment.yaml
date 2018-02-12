@@ -15,8 +15,6 @@ spec:
         app: {{ template "alfresco-api-gateway.name" . }}
         release: {{ .Release.Name }}
     spec:
-      imagePullSecrets:
-        - name: {{ .Values.registryPullSecrets }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

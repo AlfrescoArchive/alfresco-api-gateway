@@ -13,7 +13,7 @@
     <java.version>1.8</java.version>
     <!-- dependencies -->
     <activiti-cloud.version>7-201802-EA-SNAPSHOT</activiti-cloud.version>
-    <spring-boot.version>2.0.0.M7</spring-boot.version>
+    <spring-boot.version>2.0.0.RC2</spring-boot.version>
     <!-- plugins -->
     <docker-maven-plugin.version>0.21.0</docker-maven-plugin.version>
     <git-commit-id-plugin.version>2.2.3</git-commit-id-plugin.version>
@@ -33,6 +33,17 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <!--exclude tomcat and use embedded jetty, see root pom-->
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-zuul</artifactId>

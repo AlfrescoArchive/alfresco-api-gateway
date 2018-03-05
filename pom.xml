@@ -70,11 +70,49 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <repositories>
+    <repository>
+      <id>activiti-snapshots</id>
+      <name>Activiti Snapshots</name>
+      <url>https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <build>
     <plugins>
       <plugin>
         <groupId>io.fabric8</groupId>
         <artifactId>docker-maven-plugin</artifactId>
+        <version>${docker-maven-plugin.version}</version>
+        <configuration>
+          <images>
+            <image>
+              <name>activiti/activiti-cloud-gateway</name>
+              <alias>activit-cloud-gateway</alias>
+              <build>
+                <from>openjdk:alpine</from>
+                <assembly>
+                  <descriptorRef>artifact</descriptorRef>
+                </assembly>
+                <cmd>java ${JAVA_OPTS} -jar maven/${project.artifactId}-${project.version}.jar</cmd>
+              </build>
+            </image>
+          </images>
+        </configuration>
+        <executions>
+          <execution>
+            <id>docker:build</id>
+            <phase>install</phase>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

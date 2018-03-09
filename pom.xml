@@ -17,6 +17,9 @@
     <developerConnection>scm:git:https://github.com/Activiti/${project.artifactId}.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
+  <properties>
+    <suppressionFile>${basedir}/dependency-check-suppression.xml</suppressionFile>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -48,6 +51,46 @@
     <dependency>
       <groupId>org.activiti.cloud</groupId>
       <artifactId>activiti-cloud-services-monitoring</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.keycloak</groupId>
+      <artifactId>keycloak-adapter-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-commons</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.netflix.zuul</groupId>
+      <artifactId>zuul-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-netflix-zuul</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.keycloak</groupId>
+      <artifactId>keycloak-spring-security-adapter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot</artifactId>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

@@ -16,7 +16,7 @@ import org.springframework.web.filter.CorsFilter;
 @EnableZuulProxy
 @EnableDiscoveryClient
 @EnableAutoConfiguration(exclude = {
-        org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class})
+        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
 public class GatewayApplication {
 
     public static void main(String[] args) {

@@ -90,6 +90,14 @@
       <artifactId>spring-boot</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.activiti.cloud</groupId>
+      <artifactId>activiti-cloud-services-query-graphql-ws</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.activiti.cloud</groupId>
+      <artifactId>activiti-cloud-services-query-graphql-ws-security</artifactId>
+    </dependency> 
+    <dependency>     
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>

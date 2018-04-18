@@ -29,6 +29,8 @@ public class GatewayApplication {
         return new KeycloakFilterRoute();
     }
 
+    // Added missing @Bean annotation. Is it intentional?
+    @Bean
     @ConditionalOnProperty(prefix = "activiti", name = "cors", matchIfMissing = false)
     public FilterRegistrationBean corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

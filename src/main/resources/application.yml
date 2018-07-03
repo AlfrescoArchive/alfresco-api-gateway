@@ -1,0 +1,13 @@
+spring:
+  application.name: gateway
+# log level seems to be needed explicitly
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    org.springframework.cloud.loadbalancer: INFO
+server.port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
